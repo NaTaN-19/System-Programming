@@ -1,0 +1,3 @@
+The system started successfully.
+The user logged into the application.
+No error was detected.

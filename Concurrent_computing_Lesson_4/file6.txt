@@ -1,0 +1,3 @@
+The application is running.
+Users can create new accounts.
+Users can update their profiles.

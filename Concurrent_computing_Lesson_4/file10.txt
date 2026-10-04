@@ -1,0 +1,3 @@
+Final test file.
+The process completed with error error error.
+All statistics should be calculated correctly.
