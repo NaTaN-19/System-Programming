@@ -1,1 +1,3 @@
-sklfmw;klef
+Hello world.
+This is a simple text file.
+Everything is working correctly.
