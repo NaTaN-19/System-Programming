@@ -2,25 +2,12 @@ string[] files = Directory.GetFiles("Files", "*.txt");
 
 FileProcessor fileProcessor = new FileProcessor();
 
-Thread[] threads = new Thread[files.Length];
 FileStatistics[] statistics = new FileStatistics[files.Length];
 
-for (int i = 0; i < files.Length; i++)
+Parallel.For(0, files.Length, i =>
 {
-    int index = i;
-
-    threads[index] = new Thread(() =>
-    {
-        statistics[index] = fileProcessor.ProcessFile(files[index]);
-    });
-
-    threads[index].Start();
-}
-
-for (int i = 0; i < threads.Length; i++)
-{
-    threads[i].Join();
-}
+    statistics[i] = fileProcessor.ProcessFile(files[i]);
+});
 
 List<FileStatistics> statisticsList = statistics.ToList();
 
@@ -35,6 +22,7 @@ for (int i = 0; i < files.Length; i++)
 }
 
 FileStatisticsCalculator calculator = new FileStatisticsCalculator();
+
 FileStatistics total = calculator.CalculateTotal(statisticsList);
 
 Console.WriteLine("===== TOTAL =====");
